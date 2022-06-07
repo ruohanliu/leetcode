@@ -9,6 +9,7 @@ class Solution:
             #linkedlist #sentinel
 
             save next node first thing in a loop
+            if unsure of next node, set curr.next = None
         """
         if not head:
             return None

@@ -3,8 +3,6 @@ class Solution:
     def findKthPositive(self, arr: List[int], k: int) -> int:
         """
             #binarysearch
-            // will round to the left
-            prioritize increment on the left size while being careful not to exclude any valid value.
         """
         lo = 0
         hi = len(arr)-1

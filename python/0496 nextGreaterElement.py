@@ -1,8 +1,9 @@
 class Solution:
     def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
         """
-            #stack #deque
+            #stack #deque #monostack #important
         """
+        from collections import deque
         stack = deque([])
         n2_dict = {}
         for n2 in nums2:

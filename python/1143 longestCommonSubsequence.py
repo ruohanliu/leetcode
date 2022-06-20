@@ -22,6 +22,8 @@ class Solution:
         # text1 < text2
         m = len(text1)
         n = len(text2)
+
+        # initialization. base case: there is  0 common char.  for other problems, the initial value could be others.
         prev = [0] * (m+1)
         curr = [0] * (m+1)
         

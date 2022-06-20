@@ -4,11 +4,14 @@
 
 
 ##### binary search
-1. always use while lo < hi
-2. determine which side is safe to shrink, prioritize shrinking on this side.
-    1. if left is safe, then `mid = (lo + hi) // 2`
-    2. if right is safe, then `mid = (lo + hi) // 2 + 1`
-3. Consider corner case where length < 2
+1. use `while lo < hi` if want to find index
+    1. determine which side is safe to shrink, prioritize shrinking on this side.
+        1. if left is safe, then `mid = (lo + hi) // 2`
+        2. if right is safe, then `mid = (lo + hi) // 2 + 1`
+    2. Consider corner case where length < 2
+2. use `while lo <= hi` if may want to return index during search
+    1. mid must be `mid = (lo + hi) //2`
+    2. if not returning, it must shrink on both side
 
 
 ##### dp

@@ -9,6 +9,7 @@
         1. if left is safe, then `mid = (lo + hi) // 2`
         2. if right is safe, then `mid = (lo + hi) // 2 + 1`
     2. Consider corner case where length < 2
+    3. resulting lo/hi is the best index satisfying the non-safer condition
 2. use `while lo <= hi` if may want to return index during search
     1. mid must be `mid = (lo + hi) //2`
     2. if not returning, it must shrink on both side

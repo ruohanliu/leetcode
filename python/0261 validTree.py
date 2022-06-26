@@ -1,10 +1,12 @@
 from typing import List
 class Solution:
-    def validTree_uf(self, n: int, edges: List[List[int]]) -> bool:
+    def validTree_uf_simple(self, n: int, edges: List[List[int]]) -> bool:
         """
             #unionfind #graph #treegraph #undirected #important
 
             Return true if the edges of the given graph make up a valid tree, and false otherwise.
+
+            O(EV)
         """
         if len(edges) != n - 1:
             return False
@@ -16,6 +18,46 @@ class Solution:
             a,b = map(find,ab)
             uf[a] = b
             return a != b
+        return all(union(edge) for edge in edges)
+
+    def validTree_uf_pathcompression(self, n: int, edges: List[List[int]]) -> bool:
+        """
+            #pathcompression
+            O(Elog*V)
+        """
+        if len(edges) != n - 1:
+            return False
+        
+        uf = list(range(n))
+        rank = [1] * n
+
+        def find(a):
+            """
+                or the following
+
+                _a = a
+                while a != uf[a]:
+                    a = uf[a]
+                while _a != a:
+                    _a,uf[_a] = uf[_a],a
+                return a 
+            """
+            while a != uf[a]:
+                uf[a] == uf[uf[a]]
+                a = uf[a]
+            return a 
+
+        def union(ab):
+            a,b = map(find,ab)
+            if a == b:
+                return False
+            if rank[a] > rank[b]:
+                rank[a] += rank[b]
+                uf[b] = a
+            else:
+                rank[b] += rank[a]
+                uf[a] = b
+            return True
         return all(union(edge) for edge in edges)
             
 

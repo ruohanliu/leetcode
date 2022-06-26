@@ -29,3 +29,10 @@ initialize memo/counter
 
 ##### matrix
 1. initialization use `[[0] * x for _ in range(x)]`
+
+
+##### Graph
+1. adjacency list use set if vertices need to be removed, such as in topological sort
+2. for topological sort
+    1. create adjList, inDegree, queue. queue should be created from all vertices instead of defaultdict
+    2. if all parent of a vertext are needed, create a vertex[parents] map.  O(n^3) time and O(n^2) space

@@ -29,7 +29,7 @@ initialize memo/counter
 
 ##### matrix
 1. initialization use `[[0] * x for _ in range(x)]`
-
+2. dfs/bfs record visited status early when adding to stack/queue.
 
 ##### Graph
 1. adjacency list use set if vertices need to be removed, such as in topological sort and dijkstra

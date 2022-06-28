@@ -41,6 +41,9 @@ initialize memo/counter
 4. Dijkstra
     1. use dist[].
     2. check visited status before push to heap
+    3. check vertext doneness in right after heappop
+    4. The maximum number of vertices that could be added to the heap is E. V^2 >= E >= V-1 graph. O(E * log|V|) + O(V * logV) = O(E * logV)
+    5. works for connected non-negative directed and undirected graph
 
 ##### Misc.
 1. During recursion, when mutable type is added to answer, a copy must be created.

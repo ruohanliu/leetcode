@@ -32,22 +32,26 @@ initialize memo/counter
 2. dfs/bfs record visited status early when adding to stack/queue. check validity of initial stack/queue
 
 ##### Graph
-1. adjacency list use set if vertices need to be removed, such as in topological sort and dijkstra
+1. Adjacency list use set if vertices need to be removed, such as in topological sort and dijkstra
 2. Topological sort
     1. create adjList, inDegree, queue. queue should be created from all vertices instead of defaultdict
     2. if all parent of a vertext are needed, create a vertex[parents] map.  O(n^3) time and O(n^2) space
 3. DAG
     1. no need to check visited vertices
+    2. reversal of all edge direction does not matter
 4. Dijkstra
-    1. use dist[].
+    1. use dist[] adjList{} heap
     2. check visited status before push to heap
-    3. check vertext doneness in right after heappop
+    3. check vertex doneness right after heappop
     4. The maximum number of vertices that could be added to the heap is E. V^2 >= E >= V-1 graph. O(E * log|V|) + O(V * logV) = O(E * logV)
-    5. works for connected non-negative directed and undirected graph
+    5. works for finding paths in connected non-negative directed and undirected graph
 5. Kruskal
     1. undirected edge-weighted graph
 6. BFS
     1. usually for shortest path
+7. Bipartition
+    1. iff the graph does not contain odd cycle
+    2. sum of X degree = sum of Y degree
 
 ##### Misc.
 1. During recursion, when mutable type is added to answer, a copy must be created.

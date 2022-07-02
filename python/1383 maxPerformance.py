@@ -3,9 +3,10 @@ class Solution:
     def maxPerformance(self, n: int, speed: List[int], efficiency: List[int], k: int) -> int:
         """
             #sort #heap #hard #important
-
+            related: 1996 numberOfWeakCharacters
+            
             it is a two-dimension optimization problem. fix one dimension, enumerate on the other.
-            iterate from the greatest efficiency to allow one pass of candidates.
+            iterate from the greatest efficiency to allow one pass of candidates. does not need to sort on speed because heap is used.
 
             If curr_speed > popped speed, cur_speed should be in the heap.
             If curr_speed < popped_speed, it means that it will be the new minimum and will be popped during next iteration anyway.

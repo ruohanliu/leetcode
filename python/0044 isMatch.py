@@ -20,7 +20,7 @@ class Solution:
                 dp[s_index-1][i] = dp[s_index-1][i-1]
 
                 while s_index < n+1:
-                    dp[s_index][i] = True
+                    dp[s_index][i] = dp[s_index-1][i]
                     s_index += 1
 
             elif p[i-1] == "?":

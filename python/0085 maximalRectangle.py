@@ -15,7 +15,7 @@ class Solution:
                 monoStack.append(i)
             monoStack = []
             for i in range(n-1,-1,-1):
-                while monoStack and nums[monoStack[-1]] >= nums[i]:
+                while monoStack and nums[monoStack[-1]] > nums[i]:
                     prevMinIndex[monoStack.pop()] = i
                 monoStack.append(i)
             for i in range(n):

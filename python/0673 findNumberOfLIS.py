@@ -4,17 +4,18 @@ class Solution:
             #dp #LIS
             related: 300
         """
-        # dp[i] stores the LIS ending at i
+        # dp[i] stores the LIS ending at i (length,freq)
         n = len(nums)
-        dp = [[1, 1] for _ in range(n)]
-
-        currMax = 0
-        for i in range(1, n):
-            for j in range(0, i):
-                if nums[i] > nums[j]:
-                    if dp[j][0]+1 > dp[i][0]:
-                        dp[i] = [dp[j][0]+1, 1]
-                    elif dp[j][0]+1 == dp[i][0]:
-                        dp[i][1] += 1
-            currMax = max(currMax, dp[i][1])
-        return sum(x[1] for x in dp if x[1] == currMax)
+        dp = [[1,1] for _ in range(n)]
+        globalMax = 1
+        for i in range(1,n):
+            localMax = 1
+            for j in range(i):
+                if nums[i]>nums[j]:
+                    if dp[j][0]+1 > localMax:
+                        localMax = dp[j][0]+1
+                        dp[i] = [localMax,dp[j][1]]
+                    elif dp[j][0]+1 == localMax:
+                        dp[i][1] += dp[j][1]
+            globalMax = max(globalMax,localMax)
+        return sum(f for l,f in dp if l == globalMax)

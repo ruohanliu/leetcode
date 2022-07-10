@@ -28,8 +28,6 @@ class Solution:
         uf = list(range(n))
         rank = [1] * n
 
-        eqAdjList = defaultdict(list)
-        neAdjList = defaultdict(list)
         for e in equations:
             if e[1:3] == "==":
                 v = ord(e[0]) - 97
@@ -40,7 +38,7 @@ class Solution:
             if e[1:3] == "!=":
                 v = ord(e[0]) - 97
                 u = ord(e[3]) - 97
-                if union(u,v):
+                if find(v) == find(u):
                     return False
 
         return True

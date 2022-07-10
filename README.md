@@ -1,5 +1,4 @@
 ## Notes
-
 `+`,`-` have higher precedence over `>>`, `<<`
 
 
@@ -13,6 +12,7 @@
 2. use `while lo <= hi` if may want to return index during search
     1. mid must be `mid = (lo + hi) //2`
     2. if not returning, it must shrink on both side
+3. bisect_left(nums,target) == bisect_right(nums,target) means target is not in nums
 
 
 ##### dp
@@ -23,8 +23,9 @@ optimal substructure; overlapping sub-problem
 4. determine order of traversal
 
 ##### prefixsum
-sum(i:j] can be computed  as prefixSum(j) - prefixSum(i)
-initialize memo/counter
+1. sum(i:j] can be computed  as prefixSum(j) - prefixSum(i)
+2. there are n*(n+1)/2 non-empty subarrays
+3. add 0 to the beginning of prefixsum
 
 
 ##### matrix

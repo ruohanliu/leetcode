@@ -59,11 +59,11 @@ class Solution:
         for i,num1 in enumerate(numbers):
             if num1 not in dup:
                 dup.add(num1)
-            for j,num2 in enumerate(numbers[i+1:]):
-                complement = -num1 - num2
-                if complement in seen and seen[complement] == i:
-                    ans.add(tuple(sorted([num1,num2,complement])))
-                seen[num2] = i
+                for j,num2 in enumerate(numbers[i+1:]):
+                    complement = -num1 - num2
+                    if complement in seen and seen[complement] == i:
+                        ans.add(tuple(sorted([num1,num2,complement])))
+                    seen[num2] = i
         return ans
 s = Solution()
 print(s.threeSum([-4,-2,1,-5,-4,-4,4,-2,0,4,0,-2,3,1,-5,0]))

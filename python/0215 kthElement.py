@@ -21,9 +21,7 @@ class minHeap():
         return -res
 
     def exch(self,i,j):
-        temp = self.heap[i]
-        self.heap[i] = self.heap[j]
-        self.heap[j] = temp
+        self.heap[i],self.heap[j] = self.heap[j],self.heap[i]
 
     def swim(self,i:int):
         while (i > 1 and self.heap[i]>self.heap[i//2]):

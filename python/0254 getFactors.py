@@ -1,7 +1,7 @@
 class Solution:
     def getFactors(self, n: int) -> List[List[int]]:
         """
-            #math
+            #math #primefactor
         """
         ans = []
         queue = [(n,2,[])]

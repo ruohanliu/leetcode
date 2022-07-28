@@ -34,24 +34,25 @@ class Solution:
 
         Time and Space: N^2
         """
-        def wrapper(i):
-            if i in memo:
-                return memo[i]
-
+        @cache
+        def helper(i):
+            nonlocal ans
             maxSubset = []
             for j in range(i):
-                if nums[i] % nums[j] ==0:
-                    subset = wrapper(j)
+                if nums[i] % nums[j] == 0:
+                    subset = helper(j)
                     if len(subset) > len(maxSubset):
-                        maxSubset = subset
+                        maxSubset = subset[:]
 
-            memo[i] = maxSubset.copy()
-            memo[i].append(nums[i])
-            return memo[i]
-
-        memo = {}
+            maxSubset.append(nums[i])
+            if len(maxSubset) > len(ans):
+                ans = maxSubset
+            return maxSubset
         nums.sort()
-        return max([wrapper(i) for i in range(len(nums))],key=len)
+        ans = []
+        
+        list(map(helper,range(len(nums))))
+        return ans
 
 s = Solution()
 print(s.largestDivisibleSubset_memo([1,2,3]))

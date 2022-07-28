@@ -46,11 +46,15 @@ optimal substructure; overlapping sub-problem
     3. check vertex doneness right after heappop
     4. The maximum number of vertices that could be added to the heap is E. V^2 >= E >= V-1 graph. O(E * log|V|) + O(V * logV) = O(E * logV)
     5. works for finding paths in connected non-negative directed and undirected graph
-5. Kruskal
+5. Prim
+    1. works for finding MST in undirected with negative weight edge
+6. Kruskal
     1. undirected edge-weighted graph
-6. BFS
+7. Bellman-Ford
+    1. Single source shortest path, like Dijkstra. O(VE) time complexity, works for negative weight edge.
+7. BFS
     1. usually for shortest path
-7. Bipartition
+8. Bipartition
     1. iff the graph does not contain odd cycle
     2. sum of X degree = sum of Y degree
 

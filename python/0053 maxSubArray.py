@@ -1,5 +1,8 @@
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
+        """
+            #kadane #algorithm #important
+        """
         curr = nums[0]
         ans = curr
         for n in nums[1:]:

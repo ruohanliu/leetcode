@@ -34,16 +34,8 @@ class Solution:
         """
         words.sort(key=len)
         wordsMap = {}
-        currLenSet = set()
         ans = 0
-        currLen = 0
         for word in words:
-            # memory usage optimization
-            if len(word) > currLen:
-                for word in currLenSet:
-                    del wordsMap[k]
-                currLenSet.clear()
-                currLen = len(word)
             maxChain = 0
             for i in range(len(word)):
                 predecessor = f"{word[:i]}{word[i+1:]}"

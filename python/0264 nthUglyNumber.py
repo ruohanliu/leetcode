@@ -1,7 +1,7 @@
 class Solution:
     def nthUglyNumber(self, n: int) -> int:
         """
-            #math #dp
+            #math #dp #important
 
             while building towards nth ugly number, the kth ugly number must be used thrice by multiplying 2,3,5
             to form the next 3 numbers.

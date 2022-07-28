@@ -44,6 +44,7 @@ class Solution:
         """
         from functools import cache
 
+        @cache
         def lcs(i,j):
             if i == len(text1) or j == len(text2):
                 return 0

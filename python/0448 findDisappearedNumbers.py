@@ -3,6 +3,7 @@ class Solution:
     def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
         """
             #rotation
+            related 0442 
         """
         for i in range(len(nums)):
             while nums[i] != i+1 and nums[i] >0:

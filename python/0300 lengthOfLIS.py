@@ -30,6 +30,7 @@ class Solution:
                 return 1
             recMax = 1
             for j in range(i):
+                # Must calculate lis(j) regardless
                 recRes = lis(j)
                 if nums[i] > nums[j]:
                     recMax = max(recMax, recRes+1)

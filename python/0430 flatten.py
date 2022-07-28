@@ -10,6 +10,9 @@ class Node:
 
 class Solution:
     def flatten(self, node: 'Optional[Node]') -> 'Optional[Node]':
+        """
+            #linkedlist #important
+        """
         def helper(node):
             start = node
             end = node

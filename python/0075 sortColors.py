@@ -1,7 +1,7 @@
 class Solution:
     def sortColors_countingsort(self, nums: List[int]) -> None:
         """
-            #sort #important #algorithm #countingsort
+            #sort #important #algorithm #countingsort #dutchflag
 
             sort 3 color in place
         """

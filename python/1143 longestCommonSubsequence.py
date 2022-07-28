@@ -14,7 +14,7 @@ class Solution:
 
     def longestCommonSubsequence_space_optimizaed(self, text1: str, text2: str) -> int:
         """
-            #dp #spaceoptimize #important
+            #dp #spaceoptimize #important #lcs
         """
         if len(text2) < len(text1):
             text1, text2 = text2, text1

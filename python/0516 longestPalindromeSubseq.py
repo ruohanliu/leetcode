@@ -2,6 +2,8 @@ class Solution:
     def longestPalindromeSubseq(self, s: str) -> int:
         """
             #dp #palindrome #important
+
+            related 1682 1216
         """
         n = len(s)
         dp = [[0] * n for _ in range(n)]

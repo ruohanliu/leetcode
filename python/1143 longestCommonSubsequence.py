@@ -2,7 +2,7 @@ class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
         m = len(text1)
         n = len(text2)
-        dp = [[0] * n for _ in range(m)]
+        dp = [[0] * (n+1) for _ in range(m+1)]
         for i in reversed(range(m)):
             for j in reversed(range(n)):
                 if text1[i] == text2[j]:

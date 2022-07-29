@@ -21,11 +21,6 @@ class Solution:
             nums[i] = abs(nums[i])
 
         return duplicate
-    def findDuplicate(self, nums: List[int]) -> int:
-        bitmask = nums[0]
-        for i in range(1,n+1):
-            bitmask ^= i ^ nums[i]
-        return bitmask
 
     def findDuplicate(self, nums: List[int]) -> int:
         """

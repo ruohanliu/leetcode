@@ -3,7 +3,7 @@ class Solution:
     def maxPerformance(self, n: int, speed: List[int], efficiency: List[int], k: int) -> int:
         """
             #sort #heap #hard #important
-            related: 1996 numberOfWeakCharacters
+            related: 1996 numberOfWeakCharacters 857 minCostToHireWorkers
             
             it is a two-dimension optimization problem. fix one dimension, enumerate on the other.
             iterate from the greatest efficiency to allow one pass of candidates. does not need to sort on speed because heap is used.

@@ -2,7 +2,8 @@ class Solution:
     def rangeBitwiseAnd(self, left: int, right: int) -> int:
         """
             #bitwise
-
+            
+            related 1521
             when m != n, There is at least an odd number and an even number, so the last bit position result is 0
         """
         while left < right:

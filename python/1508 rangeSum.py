@@ -3,7 +3,7 @@ from itertools import accumulate
 class Solution:
     def rangeSum(self, nums: List[int], n: int, left: int, right: int) -> int:
         """
-            #heap
+            #heap #important
 
             #prefixsum #binarysearch #furtherstudy
             https://leetcode.com/problems/range-sum-of-sorted-subarray-sums/discuss/733047/Python-Binary-Search-Time-O(NlogSum(A))

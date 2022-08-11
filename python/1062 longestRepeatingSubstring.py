@@ -3,8 +3,9 @@ class Solution:
     def longestRepeatingSubstring(self, s: str) -> int:
         """
             #dp #lcs #substring #binarysearch #rollinghash #rabin-karp #important #furtherstudy
-
             related 1044 1143
+            
+            O(n^2)
         """
         n = len(s)
         ans = 0
@@ -17,7 +18,26 @@ class Solution:
             
         return ans
 
+    def longestRepeatingSubstring(self, s: str) -> int:
+        n = len(s)
+        ans = 0
+        prev = [0] * (n+1)
+        curr = prev[:]
+        for i in range(n):
+            for j in range(i):
+                if s[i] == s[j]:
+                    curr[j+1] = prev[j] + 1
+                    ans = max(ans,curr[j+1])
+                else:
+                    curr[j+1] = 0
+            prev,curr = curr,prev
+            
+        return ans
+
     def longestRepeatingSubstring(self, s: str) -> str:
+        """
+            average O(nlogn) worst O(n^2)
+        """
         def search(length):
             seen = set()
             for i in range(len(s)-length+1):
@@ -37,6 +57,9 @@ class Solution:
         return lo
 
     def longestRepeatingSubstring(self, s: str) -> str:
+        """
+            O(nlogn)
+        """
         def search(length):
             seen = set()
             for i in range(len(s)-length+1):

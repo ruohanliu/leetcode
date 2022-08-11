@@ -2,7 +2,7 @@ from typing import List
 class Solution:
     def maxKilledEnemies(self, grid: List[List[str]]) -> int:
         """
-            #dp #matrix #important
+            #dp #matrix #important #bomb
             related #2257
             dp can be done in the inner loop at small scale
         """

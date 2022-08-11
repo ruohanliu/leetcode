@@ -34,3 +34,15 @@ class Solution:
                     if _HP > HPHistory[r][c]:
                         HPHistory[r][c] = _HP
                         heapq.heappush(heap,(-_minHP,-_HP,r,c))
+
+    def calculateMinimumHP(self, dungeon: List[List[int]]) -> int:
+        m = len(dungeon)
+        n = len(dungeon[0])
+        dp = [[float("inf")] * n for _ in range(m)]
+        for i in reversed(range(m)):
+            for j in reversed(range(n)):
+                curr = dungeon[i][j]
+                r = float("inf") if j == n-1 else max(1,dp[i][j+1]-curr)
+                d = float("inf") if i == m-1 else max(1,dp[i+1][j]-curr)
+                dp[i][j] = min(r,d) if min(r,d) < float("inf") else 1 - min(curr,0)
+        return dp[0][0]

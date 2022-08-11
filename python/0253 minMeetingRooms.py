@@ -3,7 +3,7 @@ import heapq
 class Solution:
     def minMeetingRooms(self, intervals: List[List[int]]) -> int:
         """
-            #interval #listcomprehension #heap
+            #interval #heap
         """
         heap = []
         for interval in intervals:

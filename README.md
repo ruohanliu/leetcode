@@ -13,6 +13,7 @@
     1. mid must be `mid = (lo + hi) //2`
     2. if not returning, it must shrink on both side
 3. bisect_left(nums,target) == bisect_right(nums,target) means target is not in nums
+4. floating point binary search use precision ans while condition: eg. `while hi-lo > 1E-5`
 
 
 ##### dp
@@ -60,3 +61,4 @@ optimal substructure; overlapping sub-problem
 
 ##### Misc.
 1. During recursion, when mutable type is added to answer, a copy must be created.
+2. Two pointer: one pointer start at loose condition, other start at tight condition

@@ -7,7 +7,7 @@
 class Solution:
     def countNodes(self, root: Optional[TreeNode]) -> int:
         """
-            #tree #binarysearch #important
+            #tree #binarysearch #important #hard
 
             O(logn * logn)
         """

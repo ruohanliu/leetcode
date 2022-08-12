@@ -10,7 +10,29 @@ class Solution:
                 else:
                     dp[i][j] = max(dp[i][j+1],dp[i+1][j])
         return dp[0][0]
-
+        
+    # print lcs
+    def lcs(s,t):
+        n = len(s)
+        m = len(t)
+        dp = [[0] * (m+1) for _ in range(n+1)]
+        for i in range(n):
+            for j in range(m):
+                if s[i] == t[j]:
+                    dp[i+1][j+1] = dp[i][j] + 1
+        ans = []
+        i = n
+        j = m
+        while i and j:
+            if s[i-1] == t[j-1]:
+                ans += s[i-1],
+                i -= 1
+                j -= 1
+            elif dp[i-1][j] > dp[i][j-1]:
+                i -= 1
+            else:
+                j -= 1
+        return ans[::-1]
 
     def longestCommonSubsequence_space_optimizaed(self, text1: str, text2: str) -> int:
         """

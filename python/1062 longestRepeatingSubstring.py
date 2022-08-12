@@ -34,6 +34,26 @@ class Solution:
             
         return ans
 
+    # print lcs longest common substring
+    def lcs(s,t):
+        n = len(s)
+        m = len(t)
+        prev = [0] * (n+1)
+        curr = prev[:]
+        r = ans = 0
+        for i in range(m):
+            for j in range(n):
+                if s[j] == t[i]:
+                    curr[j+1] = prev[j] + 1
+                    if curr[j+1] > ans:
+                        ans = curr[j+1]
+                        r = j
+                else:
+                    curr[j+1] = 0
+            prev,curr = curr,prev
+        
+        return s[r+1-ans:r+1]
+
     def longestRepeatingSubstring(self, s: str) -> str:
         """
             average O(nlogn) worst O(n^2)

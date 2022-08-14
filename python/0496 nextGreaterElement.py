@@ -3,14 +3,10 @@ class Solution:
         """
             #stack #deque #monostack #important
         """
-        from collections import deque
-        stack = deque([])
-        n2_dict = {}
-        for n2 in nums2:
-            while stack and stack[-1] < n2:
-                n2_dict[stack.pop()] = n2
-            stack.append(n2)
-        while stack:
-            n2_dict[stack.pop()] = -1
-        return [n2_dict[x] for x in nums1]
-                
+        stack = []
+        nG = defaultdict(lambda:-1)
+        for y in nums2:
+            while stack and stack[-1] < y:
+                nG[stack.pop()] = y
+            stack.append(y)
+        return [nG[x] for x in nums1]

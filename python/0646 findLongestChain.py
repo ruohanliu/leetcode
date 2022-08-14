@@ -2,7 +2,7 @@ from typing import List
 class Solution:
     def findLongestChain(self, pairs: List[List[int]]) -> int:
         """
-            #dp #sort
+            #dp #sort #lis
         """
         n = len(pairs)
         dp = [1] * n
@@ -18,7 +18,6 @@ class Solution:
     def findLongestChain(self, pairs: List[List[int]]) -> int:
         """
             #sort #greedy #important
-            #furtherstudy
 
             interval scheduling problem
         """

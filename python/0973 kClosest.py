@@ -7,46 +7,35 @@ class Solution:
             #kth #quickselect #algorithm
         """
         return self.quick_select(points, k)
+
+    @cache
+    def squared_distance(self,x,y) -> int:
+        return x ** 2 + y ** 2
     
-    def quick_select(self, points: List[List[int]], k: int) -> List[List[int]]:
-        """Perform the QuickSelect algorithm on the list"""
-        left, right = 0, len(points) - 1
-        pivot_index = len(points)
-        while pivot_index != k:
-            # Repeatedly partition the list
-            # while narrowing in on the kth element
-            pivot_index = self.partition(points, left, right)
-            if pivot_index < k:
-                left = pivot_index
+    def quick_select(self, points,k):
+        lo, hi = 0, len(points) - 1
+        pivotIndex = len(points)
+        while pivotIndex != k:
+            pivotIndex = self.partition(points, lo, hi)
+            if pivotIndex < k:
+                lo = pivotIndex
             else:
-                right = pivot_index - 1
+                hi = pivotIndex - 1
         
-        # Return the first k elements of the partially sorted list
         return points[:k]
     
-    def partition(self, points: List[List[int]], left: int, right: int) -> int:
-        """Partition the list around the pivot value"""
-        pivot = self.choose_pivot(points, left, right)
-        pivot_dist = self.squared_distance(pivot)
-        while left < right:
-            # Iterate through the range and swap elements to make sure
-            # that all points closer than the pivot are to the left
-            if self.squared_distance(points[left]) >= pivot_dist:
-                points[left], points[right] = points[right], points[left]
-                right -= 1
+    def partition(self, points, lo, hi) -> int:
+        pivotPoint = points[random.randrange(lo,hi+1)]
+        pivot = self.squared_distance(abs(pivotPoint[0]),abs(pivotPoint[1]))
+        while lo < hi:
+            if self.squared_distance(abs(points[lo][0]),abs(points[lo][1])) > pivot:
+                points[lo], points[hi] = points[hi], points[lo]
+                hi -= 1
             else:
-                left += 1
+                lo += 1
         
-        # Ensure the left pointer is just past the end of
-        # the left range then return it as the new pivotIndex
-        if self.squared_distance(points[left]) < pivot_dist:
-            left += 1
-        return left
-    
-    def choose_pivot(self, points: List[List[int]], left: int, right: int) -> List[int]:
-        """Choose a pivot element of the list"""
-        return points[left + (right - left) // 2]
-    
-    def squared_distance(self, point: List[int]) -> int:
-        """Calculate and return the squared Euclidean distance."""
-        return point[0] ** 2 + point[1] ** 2
+        # Ensure the lo pointer is just past the end of
+        # the lo range then return it as the new pivotIndex
+        if self.squared_distance(abs(points[lo][0]),abs(points[lo][1])) < pivot:
+            lo += 1
+        return lo

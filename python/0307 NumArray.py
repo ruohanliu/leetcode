@@ -18,19 +18,19 @@ class NumArray:
         """
         n = len(nums)
         self.nums = nums
-        self.ft = [0]+nums[:]
+        self.bit = [0] + nums
         for i in range(1,n+1):
             parent = i+(i&-i)
-            if parent < n+1:
-                self.ft[parent] += self.ft[i]
+            if parent < n + 1:
+                self.bit[parent] += self.bit[i]
 
     def add(self,i,delta):
-        while i < len(self.ft):
-            self.ft[i] += delta
+        while i < len(self.bit):
+            self.bit[i] += delta
             i += i&-i
-
+            
     def update(self, index: int, val: int) -> None:
-        self.add(index+1,val - self.nums[index])
+        self.add(index+1,val-self.nums[index])
         self.nums[index] = val
 
     def sumRange(self, left: int, right: int) -> int:

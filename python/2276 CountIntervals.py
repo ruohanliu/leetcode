@@ -1,10 +1,9 @@
 class CountIntervals:
     """
         #segmenttree #sortedlist #important
-        related 352
+        related 352 731 2158
         SortedList item is immutable, use pop(idx) and add() instead
     """
-
     def __init__(self):
         from sortedcontainers import SortedList
         self.range = SortedList()
@@ -12,15 +11,15 @@ class CountIntervals:
 
     def add(self, left: int, right: int) -> None:
         l = self.range.bisect_left((left,right))
-        while l-1 >= 0:
+        # because of sorting order, only need to check 1 left side but need to check multiple right side
+        if l-1 >= 0:
             x,y = self.range[l-1]
-            if y<left:
-                break
-            left = min(left,x)
-            right = max(right,y)
-            self.range.pop(l-1)
-            self.cnt -= y-x+1
-            l-=1
+            if y >= left:
+                left = min(left,x)
+                right = max(right,y)
+                self.range.pop(l-1)
+                self.cnt -= y-x+1
+                l-=1
         while l < len(self.range):
             x,y = self.range[l]
             if x > right:

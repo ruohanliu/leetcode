@@ -98,10 +98,8 @@ class Solution:
     # 3-way quick select
     def findKthLargest_quick_select(self, nums: List[int], k: int) -> int:
         def partition(lo,hi):
-            lt,i,gt = lo,lo+1,hi
-            pivotIndex = random.randrange(lo,hi+1,1)
-            nums[lo],nums[pivotIndex] = nums[pivotIndex],nums[lo]
-            pivot = nums[lo]
+            lt,i,gt = lo,lo,hi
+            pivot = nums[random.randrange(lo,hi+1,1)]
 
             while i <= gt:
                 if nums[i] < pivot:
@@ -119,7 +117,7 @@ class Solution:
             if hi <= lo:
                 return nums[lo]
             lt,gt = partition(lo,hi)
-            if k_smallest >= lt and k_smallest <= gt:
+            if lt <= k_smallest <= gt:
                 return nums[k_smallest]
             elif k_smallest < lt:
                 return quick_select(lo,lt-1,k_smallest)

@@ -2,6 +2,7 @@ class Solution:
     def nextGreaterElement(self, n: int) -> int:
         """
             #permutation #binarysearch
+            related 1842
         """
         digits = [int(c) for c in str(n)]
         n = len(digits)

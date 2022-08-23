@@ -43,7 +43,7 @@ class Solution:
 
     def findDuplicate(self, nums: List[int]) -> int:
         """
-            #binarysearch        
+            #binarysearch
         """
         lo = 1
         hi = len(nums)

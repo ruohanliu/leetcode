@@ -43,7 +43,7 @@ class Solution:
 
     def shortestWay(self, source: str, target: str) -> int:
         """
-            #greedy #important
+            #greedy #important #google
             O(m+n)
         """
         m = len(source)

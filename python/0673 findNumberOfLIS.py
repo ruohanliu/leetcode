@@ -1,7 +1,7 @@
 class Solution:
     def findNumberOfLIS(self, nums: List[int]) -> int:
         """
-            #dp #LIS
+            #dp #LIS #important
             related: 300
         """
         # dp[i] stores the LIS ending at i (length,freq)

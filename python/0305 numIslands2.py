@@ -6,9 +6,18 @@ class Solution:
             do not use recursive find(), may result in stack overflow
         """
         def find(r,c):
-            if grid[r][c] != (r,c):
-                grid[r][c] = find(*grid[r][c])
-            return grid[r][c]
+            _r,_c = r,c
+            while (r,c) != grid[r][c]:
+                r,c = grid[r][c]
+            while (_r,_c) != (r,c):
+                _r,_c,grid[_r][_c] = *grid[_r][_c],(r,c)
+            return r,c
+            """
+                recursive version:
+                if grid[r][c] != (r,c):
+                    grid[r][c] = find(*grid[r][c])
+                return grid[r][c]
+            """
         
         def union(c1,c2):
             c1 = find(*c1)

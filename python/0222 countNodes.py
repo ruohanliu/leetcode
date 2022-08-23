@@ -10,39 +10,40 @@ class Solution:
             #tree #binarysearch #important #hard
 
             O(logn * logn)
-        """
-        def check(k,d):
-            node = root
-            lo = 0
-            hi = 2**d-1
-            for _ in range(d):
-                mid = (lo+hi) // 2
-                if k>mid:
-                    node = node.right
-                    lo = mid+1
-                else:
-                    node = node.left
-                    hi = mid
-            return node
 
+            level: 1~2^(level-1)
+            binary search on the # of nodes in the deepest level
+        """
+        def check(k,n):
+            curr = root
+            while n > 1:
+                n //= 2
+                if k <= n:
+                    curr = curr.left
+                else:
+                    curr = curr.right
+                    k -= n
+            return True if curr else False
+            
         if not root:
             return 0
-        depth = -1
-        node = root
-        while node:
-            depth += 1
-            node = node.left
-        # lo = 0 in case of single root tree
-        lo = 0
-        hi = 2**(depth)-1
-        while lo < hi:
+        level = 0
+        curr = root
+        while curr:
+            level += 1
+            curr = curr.left
+        
+        complete = 2**(level-1)
+        lo = 1
+        hi = 2**(level-1)
+        while lo<hi:
             mid = (lo+hi)//2 + 1
-            print(lo,mid,hi,depth,check(mid,depth))
-            if check(mid,depth):
+            if check(mid,complete):
                 lo = mid
             else:
                 hi = mid-1
-        return 2**(depth) + lo
+                
+        return 2**(level-1)-1+lo
 
 
     def countNodes(self, root: Optional[TreeNode]) -> int:

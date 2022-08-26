@@ -9,17 +9,20 @@ class Solution:
 
             Given an integer array nums and an integer k, return the length of the shortest non-empty subarray of nums with a sum of at least k. If there is no such subarray, return -1.
         """
+        # store prefix sum in mono queue
         n = len(nums)
-        ans = float("inf")
-        # use increasing queue to store prefix sum
+        # incQueue[0] is the min ps and therefore ps[-1] - incQueue[0] is maximized
         # use a sentinel to handle single element input. then it become 1-indexed
-        incQueue = deque([(0,0)])
+        incQueue = deque([(0,-1)])
         ps = 0
+        ans = float("inf")
         for i,x in enumerate(nums):
             ps += x
-            while incQueue and incQueue[-1][1] >= ps:
+            while incQueue and incQueue[-1][0] > ps:
                 incQueue.pop()
-            while incQueue and ps - incQueue[0][1] >= k:
-                ans = min(ans,i+1-incQueue.popleft()[0])
-            incQueue.append((i+1,ps))
+            incQueue.append((ps,i))
+            while ps - incQueue[0][0] >=k:
+                _,j = incQueue.popleft()
+                ans = min(ans,i-j)
         return ans if ans < float("inf") else -1
+            

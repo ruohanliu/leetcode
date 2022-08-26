@@ -51,3 +51,24 @@ class Solution:
                     mind.popleft()
                 i+=1
         return len(nums) - i
+
+    def longestSubarray(self, nums: List[int], limit: int) -> int:
+        mind = deque()
+        maxd = deque()
+        i = 0
+        ans = 1
+        for j,x in enumerate(nums):
+            while maxd and x > maxd[-1]:
+                maxd.pop()
+            while mind and x < mind[-1]:
+                mind.pop()
+            maxd.append(x)
+            mind.append(x)
+            while maxd[0] - mind[0] > limit:
+                if maxd[0] == nums[i]:
+                    maxd.popleft()
+                if mind[0] == nums[i]:
+                    mind.popleft()
+                i+=1
+            ans = max(ans,j-i+1)
+        return ans

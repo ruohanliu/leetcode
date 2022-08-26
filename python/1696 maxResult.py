@@ -3,8 +3,7 @@ from collections import heapq,deque
 class Solution:
     def maxResult_heap(self, nums: List[int], k: int) -> int:
         """
-            #dp #monoqueue #heap #important
-            #furtherstudy #segmenttree
+            #dp #deque #heap #important
 
             simple dp is too slow
             Given i, we have to find the max score between [i-k,i)

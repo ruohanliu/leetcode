@@ -1,7 +1,7 @@
 class Solution:
     def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
         """
-            #stack #deque #monostack #important
+            #stack #monostack #important
         """
         stack = []
         nG = defaultdict(lambda:-1)

@@ -9,29 +9,26 @@ class Solution:
         m = len(grid)
         n = len(grid[0])
         ans = 0
-
-        colHits = [0]*n
-        rowHits = 0
-        for r in range(m):
-            for c in range(n):
-                if c == 0 or grid[r][c-1] == "W":
-                    rowHits = 0
-                    for k in range(c, n):
-                        if grid[r][k] == "W":
+        
+        colKills = [0] * n
+        rowKills = 0
+        for i in range(m):
+            for j in range(n):
+                if j == 0 or grid[i][j-1] == "W":
+                    rowKills = 0
+                    for k in range(j,n):
+                        if grid[i][k] == "W":
                             break
-                        elif grid[r][k] == "E":
-                            rowHits += 1
-
-                if r == 0 or grid[r-1][c] == "W":
-                    colHits[c] = 0
-                    for k in range(r, m):
-                        if grid[k][c] == "W":
+                        if grid[i][k] == "E":
+                            rowKills += 1
+                if i == 0 or grid[i-1][j] == "W":
+                    colKills[j] = 0
+                    for k in range(i,m):
+                        if grid[k][j] == "W":
                             break
-                        elif grid[k][c] == "E":
-                            colHits[c] += 1
-
-                if grid[r][c] == "0":
-                    total = rowHits + colHits[c]
-                    ans = max(ans, total)
-
+                        if grid[k][j] == "E":
+                            colKills[j] += 1
+                            
+                if grid[i][j] == "0":
+                    ans = max(ans,rowKills + colKills[j])
         return ans

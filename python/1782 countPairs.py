@@ -16,7 +16,7 @@ class Solution:
             # incident(u,v) > q
             cnt = 0
 
-            # count pairs sume of whose degree > q
+            # count pairs sum of whose degree > q
             lo = 1
             hi = n
             while lo < hi:

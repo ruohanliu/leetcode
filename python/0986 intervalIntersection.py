@@ -26,13 +26,13 @@ class Solution:
 
     def intervalIntersection_2(self, firstList: List[List[int]], secondList: List[List[int]]) -> List[List[int]]:
         ans = []
-        prefix_sum = 0
+        ps = 0
         overlap_start = 0
-        for time,status in sorted((x for interval in firstList+secondList for x in ((interval[0],1),(interval[1],-1))),key = lambda y: (y[0],-y[1])):
-            prefix_sum += status
-            if prefix_sum == 2:
+        for time,status in sorted(x for interval in firstList+secondList for x in ((interval[0],-1),(interval[1],1))):
+            ps -= status
+            if ps == 2:
                 overlap_start = time
-            elif prefix_sum == 1 and status == -1:
+            elif ps == 1 and status == 1:
                 ans.append([overlap_start,time])
         return ans
 

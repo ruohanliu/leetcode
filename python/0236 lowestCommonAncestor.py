@@ -8,7 +8,8 @@
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         """
-            #tree
+            #tree #lca
+            related 1740
         """
         def dfs(root):
             if root:

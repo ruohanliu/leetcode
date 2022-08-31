@@ -9,7 +9,7 @@ class Solution:
         c[0] += 1
         ans = 0
         ps = 0
-        for i,x in enumerate(nums):
+        for x in nums:
             ps += x
             ans += c[ps-goal]
             c[ps] += 1

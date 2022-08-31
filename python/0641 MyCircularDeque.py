@@ -1,7 +1,7 @@
 from threading import Lock
 class MyCircularDeque:
     """
-        #deque #lock #design
+        #deque #lock #design #threading
         related 622
     """
 

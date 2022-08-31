@@ -62,3 +62,14 @@ optimal substructure; overlapping sub-problem
 ##### Misc.
 1. During recursion, when mutable type is added to answer, a copy must be created.
 2. Two pointer: one pointer start at loose condition, other start at tight condition
+```
+i = 0
+j = n-1
+ans = 0
+while i<j:
+    if f(i,j):
+        ans += j-i
+        j-=1
+    else:
+        i+=1
+```

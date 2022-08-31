@@ -14,7 +14,7 @@ class Solution:
 
     def smallestDistancePair(self, nums: List[int], k: int) -> int:
         """
-            #binarysearch #twopointer
+            #binarysearch #twopointer #important
         """
         def check(distance):
             i = 0

@@ -1,24 +1,24 @@
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
         """
-            #slidingwindow #important
+            #slidingwindow
         """
-        left = 0
+        i = 0
         cs = Counter()
         ct = Counter(t)
         ans = ""
         need = len(t)
         have = 0
-        for right in range(len(s)):
-            r = s[right]
+        for j in range(len(s)):
+            r = s[j]
             cs[r]+=1
             if cs[r] <= ct[r]:
                 have += 1
             while have == need:
-                if not ans or (right-left+1) < len(ans):
-                    ans = s[left:right+1]
-                cs[s[left]]-=1
-                if cs[s[left]] < ct[s[left]]:
+                if not ans or (j-i+1) < len(ans):
+                    ans = s[i:j+1]
+                cs[s[i]]-=1
+                if cs[s[i]] < ct[s[i]]:
                     have -= 1
-                left += 1
+                i += 1
         return ans

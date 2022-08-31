@@ -1,6 +1,3 @@
-from audioop import reverse
-
-
 class Solution:
     def findItinerary(self, tickets: List[List[str]]) -> List[str]:
         def backtrack(v):

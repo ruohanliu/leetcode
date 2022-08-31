@@ -1,7 +1,7 @@
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
         """
-            #deque #important #slidingwindow
+            #deque #slidingwindow
             related 862 1425
 
             O(n)

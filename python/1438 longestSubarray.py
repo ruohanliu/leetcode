@@ -1,7 +1,7 @@
 class Solution:
     def longestSubarray(self, nums: List[int], limit: int) -> int:
         """
-            #deque #sorteddict #important #twopointer #slidingwindow
+            #deque #sorteddict #twopointer #slidingwindow
 
             order of subarray elements do not matter
             only compare min and max of subarray

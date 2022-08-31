@@ -16,8 +16,7 @@ class Solution:
                 prefixSum+=root.val
                 if prefixSum == targetSum:
                     ans += 1
-                if prefixSum - targetSum in seen:
-                    ans += seen[prefixSum-targetSum]
+                ans += seen[prefixSum-targetSum]
                 
                 seen[prefixSum]+=1
                 dfs(root.left)

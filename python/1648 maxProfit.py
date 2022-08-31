@@ -2,6 +2,7 @@ class Solution:
     def maxProfit(self, A: List[int], orders: int) -> int:
         """
             #greedy
+            related 2333
         """
         mod = 10**9+7                
         n = len(A)

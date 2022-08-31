@@ -2,7 +2,7 @@ class Solution:
     def maxCoins(self, nums: List[int]) -> int:
         """
             #dp #relation #bottomuporder
-
+            related 1039
             instead of choosing the ballon to burst first, choose the one to burst last
         """
         # dp[i][j] is the max coins between i and j baloons

@@ -1,7 +1,7 @@
 class Solution:
     def minTransfers(self, transactions: List[List[int]]) -> int:
         """
-            #dp #relation
+            #dp #relation #backtrack #greedy
         """
         tuplify = lambda balance,fn: tuple(sorted((p,b) for p,b in balance.items() if fn(p)))
         @cache
@@ -33,3 +33,27 @@ class Solution:
             else:
                 c[b].append(p)
         return ans + dp(tuplify(balance,lambda x:True))
+
+    def minTransfers(self, transactions: List[List[int]]) -> int:
+        def backtrack(balance):
+            if not balance:
+                return 0
+            for size in range(1,len(balance)+1):
+                ans = float("inf")
+                for group in combinations(balance.keys(),size):
+                    if sum(balance[p] for p in group) == 0:
+                        temp = {}
+                        for p in group:
+                            temp[p] = balance[p]
+                            del balance[p]
+                        ans = min(ans,size-1 + backtrack(balance))
+                        balance |= temp
+                        
+                if ans < float("inf"):
+                    return ans
+        
+        balance = defaultdict(int)
+        for f,t,amt in transactions:
+            balance[f] -= amt
+            balance[t] += amt
+        return backtrack(balance)

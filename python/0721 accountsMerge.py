@@ -26,7 +26,7 @@ class Solution:
 
         n = len(accounts)
         uf = list(range(n))
-        size = [0] * n
+        size = [1] * n
         # every email to their id
         idx = {}
         for i, (_, *emails) in enumerate(accounts):

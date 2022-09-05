@@ -25,7 +25,7 @@ class Solution:
             return True
 
         uf = [[i for i in range(n+1)] for _ in range(2)]
-        size = [[0] * (n+1) for _ in range(2)]
+        size = [[1] * (n+1) for _ in range(2)]
         cnt = [n] * 2
         ans = 0
 

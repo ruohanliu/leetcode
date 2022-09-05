@@ -49,7 +49,7 @@ class Solution:
         
         n = len(points)
         ds = [i for i in range(n)]
-        size = [0] * n
+        size = [1] * n
         edges = [(abs(x1-x2)+abs(y1-y2),i,j) for i,(x1,y1) in enumerate(points) for j,(x2,y2) in enumerate(points) if j>i]
         heapq.heapify(edges)
         ans = 0

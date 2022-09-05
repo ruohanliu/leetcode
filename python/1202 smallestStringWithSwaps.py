@@ -26,7 +26,7 @@ class Solution:
         
         n = len(s)
         ds = [i for i in range(n)]
-        size = [1 for i in range(n)]
+        size = [1] * n
         
         componentChar = defaultdict(list)
         for a,b in pairs:

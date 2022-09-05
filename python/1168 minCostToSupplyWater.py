@@ -26,7 +26,7 @@ class Solution:
                 return True
         
         ds = [i for i in range(n+1)]
-        size = [0] * (n+1)
+        size = [1] * (n+1)
         edges = [(w,a,b) for a,b,w in pipes] + [(w,0,i+1) for i,w in enumerate(wells)]
         heapq.heapify(edges)
         cnt = 0

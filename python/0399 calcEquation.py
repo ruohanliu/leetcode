@@ -32,3 +32,17 @@ class Solution:
             else:
                 ans.append(expandedEquations[(x,y)] if (x,y) in expandedEquations else -1.0)
         return ans
+    def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
+        """
+            #precompute
+        """
+        adjList = defaultdict(dict)
+        for (a, b), val in zip(equations, values):
+            adjList[a][a] = adjList[b][b] = 1.0
+            adjList[a][b] = val
+            adjList[b][a] = 1 / val
+        for v in adjList:
+            for a in adjList[v]:
+                for b in adjList[v]:
+                    adjList[a][b] = adjList[a][v] * adjList[v][b]
+        return [adjList[a].get(b, -1.0) for a, b in queries]

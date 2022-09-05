@@ -44,11 +44,11 @@ class Solution:
                 all_combo_dict[word[:i] + "*" + word[i+1:]].append(word)
 
         visited = set([beginWord])
-        curr = [beginWord]
+        queue = deque([beginWord])
         cnt = 1
-        while curr:
-            next = []
-            for s1 in curr:
+        while queue:
+            for _ in range(len(queue)):
+                s1 = queue.popleft()
                 for i in range(n):
                     s1i = s1[:i] + "*" + s1[i+1:]
                     for s2 in all_combo_dict[s1i]:
@@ -56,10 +56,8 @@ class Solution:
                             return cnt +1
                         
                         if s2 not in visited:
-                            next.append(s2)
+                            queue.append(s2)
                             visited.add(s2)
                     all_combo_dict[s1i] = []
             cnt +=1
-            curr = next
         return 0
-        

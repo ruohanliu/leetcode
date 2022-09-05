@@ -5,6 +5,8 @@ class Solution:
             #greedy #important #graph #bipartition #hungarian #furtherstudy
             https://leetcode.com/problems/maximum-students-taking-exam/discuss/503790/Python-Hungarian-Time-O(m2*n2)-Space-O(m*n)-beat-100
             https://www.youtube.com/watch?v=Sal6kHewGcM
+
+            related 1820
         """
         m = len(seats)
         n = len(seats[0])

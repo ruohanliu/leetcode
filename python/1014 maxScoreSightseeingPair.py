@@ -1,12 +1,11 @@
 class Solution:
     def maxScoreSightseeingPair(self, values: List[int]) -> int:
         """
-            #kadane
+            #kadane #important
         """
         ans = float("-inf")
-        curr = values[0]
-        for i in range(1,len(values)):
-            curr -= 1
-            ans = max(ans,curr + values[i])
-            curr = max(curr,values[i])
+        curr = 0
+        for x in values:
+            ans = max(ans,curr + x)
+            curr = max(curr,x) - 1
         return ans

@@ -1,6 +1,3 @@
-from turtle import position
-
-
 class Solution:
     def getMinDistSum(self, positions: List[List[int]]) -> float:
         """

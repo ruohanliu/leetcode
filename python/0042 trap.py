@@ -47,7 +47,6 @@ class Solution:
         lh = height[l]
         rh = height[r]
         while l < r:
-            print(l, r, lh, rh)
             if lh > rh:
                 r -= 1
                 ans += max(0, min(lh, rh)-height[r])
@@ -57,8 +56,3 @@ class Solution:
                 ans += max(0, min(lh, rh)-height[l])
                 lh = max(lh, height[l])
         return ans
-
-    def trap_stack(self, height: List[int]) -> int:
-
-s = Solution()
-print(s.trap([0,1,0,2,1,0,1,3,2,1,2,1]))

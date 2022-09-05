@@ -62,17 +62,14 @@ class Solution:
         for a,b in edges:
             adjList[a].add(b)
             adjList[b].add(a)
-
-        leaves = [v for v in adjList.keys() if len(adjList[v]) == 1]
+        leaves = deque([v for v in adjList.keys() if len(adjList[v]) == 1])
         while len(adjList)>2:
-            nextLeaves = []
-            while leaves:
-                leaf = leaves.pop()
+            for _ in range(len(leaves)):
+                leaf = leaves.popleft()
                 for parent in adjList[leaf]:
                     adjList[parent].discard(leaf)
                     if len(adjList[parent]) == 1:
-                        nextLeaves.append(parent)
+                        leaves.append(parent)
                 del adjList[leaf]
-            leaves = nextLeaves
 
         return leaves if leaves else [0]

@@ -66,8 +66,6 @@ class LFUCache:
                 node = ll.deleteNode()
                 if ll.isEmpty():
                     del self.freq[self.minFreq]
-                    # edge case
-                    self.minFreq = min(self.freq.keys()) if self.freq else 0
                 del self.cache[node.key]
 
             node = Node(key,value)

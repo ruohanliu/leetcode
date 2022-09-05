@@ -2,16 +2,16 @@ from typing import List
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
         """
+            #prefixsum
+
             naive method: two loops, cumulative sum, O(n^2)
 
             best method: hashmap, store cumulative sum as key,
                 one pass, O(n) and O(n)
                 current sum - previous sum  = 1 current index solution
                 s - (s-k) = k
-                #dp #difficult #clever 
 
-            related:
-                0560
+            related: 560 1477
 
             cannot use sliding window because of negative values
         """

@@ -41,6 +41,9 @@ class minHeap():
 
 
 class Solution:
+    """
+        #quickselect
+    """
     def findKthLargest_sort(self, nums: List[int], k: int) -> int:
         nums.sort()
         return nums[k-1]

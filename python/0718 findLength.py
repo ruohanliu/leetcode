@@ -2,7 +2,7 @@ from typing import List
 class Solution:
     def findLength(self, nums1: List[int], nums2: List[int]) -> int:
         """
-            #dp #furtherstudy 
+            #dp 
             Given two integer arrays nums1 and nums2, return the maximum length of a subarray that appears in both arrays.
 
             similar to find longest common subsequence
@@ -17,13 +17,13 @@ class Solution:
 
         ans = 0
 
-        for i in reversed(range(m)):
-            for j in reversed(range(n)):
+        for i in range(m):
+            for j in range(n):
                 if nums1[i] == nums2[j]:
-                    curr[j] = prev[j+1] + 1
-                    ans = max(curr[j], ans)
+                    curr[j+1] = prev[j] + 1
+                    ans = max(curr[j+1], ans)
                 else:
-                    curr[j] = 0
+                    curr[j+1] = 0
             curr, prev = prev, curr
         return ans
 

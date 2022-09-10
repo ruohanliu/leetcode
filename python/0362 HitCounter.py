@@ -1,6 +1,8 @@
 class HitCounter:
     """
-        #bisect
+        #bisect #databricks
+
+        keep historical
     """
     def __init__(self):
         self.ps = [[float("-inf"),0]]
@@ -17,7 +19,23 @@ class HitCounter:
         return self.ps[j][1] - self.ps[i][1]
 
 
-# Your HitCounter object will be instantiated and called as such:
-# obj = HitCounter()
-# obj.hit(timestamp)
-# param_2 = obj.getHits(timestamp)
+    """
+        discard historical
+    """
+    def __init__(self):
+        self.deque = collections.deque()
+        self.cnt = 0
+
+    def hit(self, timestamp):
+        if self.deque and self.deque[-1][0] == timestamp:
+            self.deque[-1][1] += 1
+        else:
+            self.deque.append([timestamp,1])
+        self.cnt += 1
+        
+    def getHits(self, timestamp):
+        # inclusive to delete
+        oldTime = timestamp - 300
+        while self.deque and self.deque[0][0] <= oldTime:
+            self.cnt -= self.deque.popleft()[1]
+        return self.cnt

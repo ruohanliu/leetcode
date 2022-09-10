@@ -42,28 +42,31 @@ class Solution:
 
     def minWindow(self, s1: str, s2: str) -> str:
         """
-            #dp #optimized #relation
+            #dp #optimized #relation #google
         """
         if len(s2) > len(s1):
             return ""
         m = len(s1)
         n = len(s2)
 
-        # curr[j] stores the starting index of substring in s1
+        # curr[j] stores the starting index + 1 of substring in s1 that matches s2[:j]
         prev = [0] * (n+1)
         curr = [0] * (n+1)
         start = 0
-        length = m + 1
+        length = float("inf")
         for i in range(m):
             prev[0] = i+1
             for j in range(n):
+                # the previous substring in s1 for s2[:j-1] is still valid
                 if s1[i] == s2[j]:
                     curr[j+1] = prev[j]
+                # the previous substring is not valid. simply do nothing.
                 else:
-                    curr[j+1] = prev[j+1]
-            if curr[-1] and (i - curr[-1] + 2) < length:
+                    continue
+            # if there is a match, and the s1 substring is shorter
+            if curr[-1] and (i - (curr[-1] - 1) + 1) < length:
                 start = curr[-1] - 1
                 length = i - curr[-1] + 2
-            prev,curr = curr,prev
+            prev = curr[:]
         
         return s1[start:start+length] if length < m+1 else ""

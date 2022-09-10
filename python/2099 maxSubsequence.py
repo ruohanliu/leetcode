@@ -41,15 +41,15 @@ class Solution:
                 return lo,hi
                 
             if lo>=hi:
-                return lo,lo
+                return
             lt,gt = partition(lo,hi)
             # comment out for quicksort
             if lt<=k<=gt:
-                return lt,gt
+                return
             if k>gt:
-                return quickselect(gt+1,hi,k)
+                quickselect(gt+1,hi,k)
             else:
-                return quickselect(lo,lt-1,k)
+                quickselect(lo,lt-1,k)
 
         orig = nums[:]
         quickselect(0,len(nums)-1,len(nums)-k)

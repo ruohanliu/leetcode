@@ -47,7 +47,7 @@ class Solution:
             if maxd[0] - mind[0] > limit:
                 if maxd[0] == nums[i]:
                     maxd.popleft()
-                if mind[0] == nums[i]:
+                elif mind[0] == nums[i]:
                     mind.popleft()
                 i+=1
         return len(nums) - i
@@ -67,7 +67,7 @@ class Solution:
             while maxd[0] - mind[0] > limit:
                 if maxd[0] == nums[i]:
                     maxd.popleft()
-                if mind[0] == nums[i]:
+                elif mind[0] == nums[i]:
                     mind.popleft()
                 i+=1
             ans = max(ans,j-i+1)

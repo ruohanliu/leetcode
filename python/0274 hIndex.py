@@ -1,7 +1,7 @@
 class Solution:
     def hIndex(self, citations: List[int]) -> int:
         """
-            #countsort #algorithm
+            #countsort #algorithm #google
         """
         citations.sort()
         lo = 0

@@ -14,24 +14,23 @@ class Solution:
         visited = set()
 
         def dfs(i,j,p,visited):
-            p += 1
             if p == k:
                 return True
             visited.add((i,j))
 
-            result = False 
             for di,dj in directions:
-                ni = i+di
-                nj = j+dj
-                if ni < m and ni >= 0 and nj >=0 and nj < n and board[ni][nj] == word[p] and (ni,nj) not in visited:
-                    result |= dfs(ni,nj,p,visited)
+                r = i+di
+                c = j+dj
+                if m>r>=0<=c<n and board[r][c] == word[p] and (r,c) not in visited:
+                    if dfs(r,c,p+1,visited):
+                        return True
 
             visited.remove((i,j))
-            return result
+            return False
                     
         for i in range(m):
             for j in range(n):
-                if word[0] == board[i][j] and dfs(i,j,0,visited):
+                if word[0] == board[i][j] and dfs(i,j,1,visited):
                     return True
 
         return False

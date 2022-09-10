@@ -12,15 +12,17 @@ class Solution:
         prev = [0] * (m+1)
         curr = [0] * (m+1)
 
-        for i in reversed(range(m)):
-            prev[i] = prev[i+1] + 1
+        for i in range(m):
+            prev[i+1] = prev[i] + 1
 
-        for i in reversed(range(n)):
-            curr[m] = 1+prev[m]
-            for j in reversed(range(m)):
+        # s2
+        for i in range(n):
+            curr[0] = 1+prev[0]
+            # s1
+            for j in range(m):
                 if s1[j] == s2[i]:
-                    curr[j] = min(prev[j], curr[j+1], prev[j+1]-1) + 1
+                    curr[j+1] = min(prev[j+1], curr[j], prev[j]-1) + 1
                 else:
-                    curr[j] = min(prev[j], curr[j+1], prev[j+1]) + 1
+                    curr[j+1] = min(prev[j+1], curr[j], prev[j]) + 1
             prev, curr = curr, prev
-        return prev[0]
+        return prev[-1]

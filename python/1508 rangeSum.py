@@ -5,8 +5,7 @@ class Solution:
         """
             #heap #important
 
-            #prefixsum #binarysearch #furtherstudy
-            https://leetcode.com/problems/range-sum-of-sorted-subarray-sums/discuss/733047/Python-Binary-Search-Time-O(NlogSum(A))
+            #prefixsum #binarysearch
         """
         n = len(nums)
         heap = [(x,i) for i,x in enumerate(nums)]

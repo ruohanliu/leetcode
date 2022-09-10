@@ -8,7 +8,7 @@ class Node(object):
 
 class Codec:
     """
-        #serialization
+        #serialization #google
     """
     def serialize(self, root: 'Node') -> str:
         """Encodes a tree to a single string.

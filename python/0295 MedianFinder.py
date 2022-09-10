@@ -18,6 +18,7 @@ class MedianFinder:
 class MedianFinder:
     """
         #heap #important
+        related 480
     """
     def __init__(self):
         # max heap

@@ -8,7 +8,7 @@ class Node:
 class Solution:
     def cloneGraph(self, node: 'Node') -> 'Node':
         """
-            #clone
+            #clone #google
         """
         if not node:
             return None

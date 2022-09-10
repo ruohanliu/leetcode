@@ -1,7 +1,7 @@
 class Solution:
     def numIslands2(self, m: int, n: int, positions: List[List[int]]) -> List[int]:
         """
-            #unionfind #2d
+            #unionfind2d
 
             do not use recursive find(), may result in stack overflow
         """

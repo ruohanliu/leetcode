@@ -54,81 +54,81 @@ class Solution:
         return res[k-1]
 
     def findKthLargest_heap2(self, nums: List[int], k: int) -> int:
-        h = []
+        heap = []
         for num in nums:
-            if len(h) == k:
-                heapq.heappushpop(h,num)
+            if len(heap) == k:
+                heapq.heappushpop(heap,num)
             else:
-                heapq.heappush(h,num)
-        return heapq.heappop(h)
+                heapq.heappush(heap,num)
+        return heapq.heappop(heap)
 
     def findKthLargest_heap3(self, nums: List[int], k: int) -> int:
         heapq.heapify(nums)
-        for i in range(len(nums)-k):
+        for _ in range(len(nums)-k):
             heapq.heappop(nums)
         return heapq.heappop(nums)
 
     def findKthLargest_heap4(self, nums: List[int], k: int) -> int:
-        h = minHeap(k)
+        heap = minHeap(k)
         for num in nums:
-            h.push(num)
-        return h.pop()
+            heap.push(num)
+        return heap.pop()
 
     # 3-way quick sort
-    def findKthLargest_quick_sort(self, nums: List[int]) -> int:
-        def quick_sort(lo,hi):
+    def findKthLargest_quicksort(self, nums: List[int]) -> int:
+        def quicksort(nums,lo,hi):
+            def partition(lo,hi):
+                pivot = nums[random.randrange(lo,hi+1)]
+                i = lo
+                while i <= hi:
+                    if nums[i] < pivot:
+                        nums[i],nums[lo] = nums[lo],nums[i]
+                        lo += 1
+                        i += 1
+                    elif nums[i] > pivot:
+                        nums[i],nums[hi] = nums[hi],nums[i]
+                        hi -= 1
+                    else:
+                        i += 1
+                return lo,hi
+
             if hi <= lo:
                 return
-            lt,i,gt = lo,lo+1,hi
-            pivotIndex = random.randrange(lo,hi+1,1)
-            nums[lo],nums[pivotIndex] = nums[pivotIndex],nums[lo]
-            pivot = nums[lo]
-            while i <= gt:
-                if nums[i] < pivot:
-                    nums[i],nums[lt] = nums[lt],nums[i]
-                    lt += 1
-                    i += 1
-                elif nums[i] == pivot:
-                    i += 1
-                else:
-                    nums[i],nums[gt] = nums[gt],nums[i]
-                    gt -= 1
-            quick_sort(lo,lt-1)
-            quick_sort(gt+1,hi)
+            lt,gt = partition(lo,hi)
+            quicksort(nums,lo,lt-1)
+            quicksort(nums,gt+1,hi)
 
-        return quick_sort(0,len(nums)-1)
+        quicksort(nums,0,len(nums)-1)
+        return nums[-k]
 
     # 3-way quick select
-    def findKthLargest_quick_select(self, nums: List[int], k: int) -> int:
-        def partition(lo,hi):
-            lt,i,gt = lo,lo,hi
-            pivot = nums[random.randrange(lo,hi+1,1)]
+    def findKthLargest_quickselect(self, nums: List[int], k: int) -> int:
+        def quickselect(nums,lo,hi,k):
+            def partition(lo,hi):
+                pivot = nums[random.randrange(lo,hi+1)]
+                i = lo
+                while i <= hi:
+                    if nums[i] < pivot:
+                        nums[i],nums[lo] = nums[lo],nums[i]
+                        lo += 1
+                        i += 1
+                    elif nums[i] > pivot:
+                        nums[i],nums[hi] = nums[hi],nums[i]
+                        hi -= 1
+                    else:
+                        i += 1
+                return lo,hi
 
-            while i <= gt:
-                if nums[i] < pivot:
-                    nums[i],nums[lt] = nums[lt],nums[i]
-                    lt += 1
-                    i += 1
-                elif nums[i] == pivot:
-                    i += 1
-                else:
-                    nums[i],nums[gt] = nums[gt],nums[i]
-                    gt -= 1
-            return (lt,gt)
-
-        def quick_select(lo,hi,k_smallest):
             if hi <= lo:
-                return nums[lo]
+                return
             lt,gt = partition(lo,hi)
-            if lt <= k_smallest <= gt:
-                return nums[k_smallest]
-            elif k_smallest < lt:
-                return quick_select(lo,lt-1,k_smallest)
+            if lt<=k<=gt:
+                return
+            if k>gt:
+                quickselect(nums,gt+1,hi,k)
             else:
-                return quick_select(gt+1,hi,k_smallest)
+                quickselect(nums,lo,lt-1,k)
+            return
 
-        return quick_select(0,len(nums)-1,len(nums)-k)
-
-
-s = Solution()
-print(s.findKthLargest_quick_select([3,2,3,1,2,4,5,5,6,7,7,8,2,3,1,1,1,10,11,5,6,2,4,7,8,5,6],2))
+        quickselect(nums,0,len(nums)-1,len(nums)-k)
+        return nums[-k]

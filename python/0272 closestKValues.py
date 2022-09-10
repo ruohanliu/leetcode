@@ -37,34 +37,35 @@ class Solution:
                 dfs(node.left)
                 dfs(node.right)
 
-        def quick_select(nums,k):
-            lo, hi = 0, len(nums) - 1
-            pivotIndex = len(nums)
-            while pivotIndex != k:
-                pivotIndex = partition(nums, lo, hi)
-                if pivotIndex < k:
-                    lo = pivotIndex
-                else:
-                    hi = pivotIndex - 1
-            
-            return nums[:k]
-        
-        def partition(nums, lo, hi) -> int:
-            pivot = abs(nums[random.randrange(lo,hi+1)]-target)
-            while lo < hi:
-                if abs(nums[lo]-target) > pivot:
-                    nums[lo], nums[hi] = nums[hi], nums[lo]
-                    hi -= 1
-                else:
-                    lo += 1
-            
-            # Ensure the lo pointer is just past the end of
-            # the lo range then return it as the new pivotIndex
-            if abs(nums[lo]-target) < pivot:
-                lo += 1
-            return lo
+        def quickselect(nums,lo,hi,k):
+            def partition(lo,hi):
+                pivot = abs(target-nums[random.randrange(lo,hi+1)])
+                i = lo
+                while i <= hi:
+                    if abs(target - nums[i]) < pivot:
+                        nums[i],nums[lo] = nums[lo],nums[i]
+                        lo += 1
+                        i += 1
+                    elif abs(target - nums[i]) > pivot:
+                        nums[i],nums[hi] = nums[hi],nums[i]
+                        hi -= 1
+                    else:
+                        i += 1
+                return lo,hi
+
+            if hi <= lo:
+                return
+            lt,gt = partition(lo,hi)
+            if lt<=k<=gt:
+                return
+            if k>gt:
+                quickselect(nums,gt+1,hi,k)
+            else:
+                quickselect(nums,lo,lt-1,k)
+            return
+
 
         nums = []
         dfs(root)
-        return quick_select(nums,k)
-        
+        quickselect(nums,0,len(nums)-1,k)
+        return nums[:k]

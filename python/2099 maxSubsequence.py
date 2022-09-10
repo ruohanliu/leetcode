@@ -43,7 +43,9 @@ class Solution:
             if lo>=hi:
                 return
             lt,gt = partition(lo,hi)
-            # comment out for quicksort
+            # quicksort variant:
+            # quickselect(gt+1,hi)
+            # quickselect(lo,lt-1)
             if lt<=k<=gt:
                 return
             if k>gt:

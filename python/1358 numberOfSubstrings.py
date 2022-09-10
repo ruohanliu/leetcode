@@ -8,7 +8,7 @@ class Solution:
         ans = 0
         i = 0
         c = {x:0 for x in "abc"}
-        for j,x in enumerate(s):
+        for x in s:
             c[x] += 1
             while all(c[k] for k in c):
                 c[s[i]] -= 1

@@ -2,7 +2,7 @@ class Solution:
     def minSumSquareDiff(self, nums1: List[int], nums2: List[int], k1: int, k2: int) -> int:
         """
             #greedy
-            related 1648
+            related 1648 2233
         """
         n = len(nums1)
         diff = sorted([abs(a-b) for a,b in zip(nums1,nums2)],reverse=True)+[0]

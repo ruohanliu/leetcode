@@ -5,6 +5,8 @@ class Solution:
             #dp #lis
 
             dp[i] usually stores the result for sequence that ends at i
+
+            this problem is equivalent to find the min number of decreasing subsequence partitions
         """
 
         # dp[i] stores the LIS ending at i

@@ -43,7 +43,7 @@ class Solution:
                 return a 
             """
             while a != uf[a]:
-                uf[a] == uf[uf[a]]
+                uf[a] = uf[uf[a]]
                 a = uf[a]
             return a 
 

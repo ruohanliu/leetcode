@@ -2,7 +2,7 @@ from typing import List
 class Solution:
     def subarraysWithMoreZerosThanOnes(self, nums: List[int]) -> int:
         """
-            #dp #important #relation
+            #dp #important #relation #bit
 
             O(N*2) is trivial, O(N) is the way to go.
             Let f(i) denotes number of valid subarrays ends at i, f(i) = f(i-1) + g(i)

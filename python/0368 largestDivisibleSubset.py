@@ -2,14 +2,14 @@ from typing import List
 class Solution:
     def largestDivisibleSubset(self, nums: List[int]) -> List[int]:
         """
-        Longest Common Sub sequence (LIS)
+            #lis
         
         For a new (larger) element to be a member of an exist subset, it must be divisible by 
         the largest element in the existing subset
 
         nums is sorted ascendingly
 
-        sets[num] represents the subset whose largest element is num. It is constructed by 
+        subsets[num] represents the subset whose largest element is num. It is constructed by 
         selecting the largest existing subsets whose largest element can divide num, and attach num to it.
 
         Time and Space: N^2
@@ -18,15 +18,15 @@ class Solution:
             1. max(List/Tuple/Dict,key=len) returns the element with max size
             2. max([],key=len) is illegal
         """
-        sets = {}
+        subsets = {}
         for num in sorted(nums):
             candidates = [set()]
-            for key in sets:
+            for key in subsets:
                 if num % key == 0:
-                    candidates.append(sets[key])
-            sets[num] = max(candidates,key=len) | {num}
+                    candidates.append(subsets[key])
+            subsets[num] = max(candidates,key=len) | {num}
 
-        return list(max(sets.values(),key=len))
+        return list(max(subsets.values(),key=len))
 
     def largestDivisibleSubset_memo(self, nums: List[int]) -> List[int]:
         """

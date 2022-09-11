@@ -3,10 +3,10 @@ class Solution:
         """
             #subsequence #iter #combination #permutation
         """
-        def isSubsequence(s, t):
-            t = iter(t)
-            return all(c in t for c in s)
-
+        def isSubsequence(s,t):
+            it = iter(t)
+            return all(c in it for c in s)
+        
         candidate = []
         c = Counter(s)
         for x in c:
@@ -15,11 +15,10 @@ class Solution:
         
         todo = set()
         for i in range(n+1):
-            for comb in combinations(candidate,i):
-                for perm in permutations(comb):
-                    todo.add("".join(perm))
-        todo = sorted(todo,key = lambda x:(len(x),x), reverse = True)
-        for cand in todo:
+            for perm in permutations(candidate,i):
+                todo.add("".join(perm))
+        
+        for cand in sorted(todo,key = lambda x:(len(x),x), reverse = True):
             if isSubsequence(cand*k,s):
                 return cand
            

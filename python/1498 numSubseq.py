@@ -1,7 +1,6 @@
 class Solution:
     def numSubseq(self, nums: List[int], target: int) -> int:
         """
-            #clever
             subsequence problem can be sorted if we dont use the order
 
             pow(base,p,mod) is more efficient

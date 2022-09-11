@@ -1,7 +1,10 @@
 class Solution:
     def uniqueLetterString(self, s: str) -> int:
         """
-            #dp #vectorization #important
+            #dp #vectorization #important #contribution
+
+            related: 940 2262
+
             find the total # of unique chars of all substring
 
             dp stores the appeal for substrings ending at i 
@@ -10,9 +13,12 @@ class Solution:
         """
         # dp[i] denotes the result for substring ending at i
         n = len(s)
+        # index of last time char appears
         charIndex = [-1] * 26
+        # number of substring for each unique char
         charLen = [0] * 26
         ans = 0
+        # for each substring ending at i
         for i in range(n):
             j = ord(s[i])-65
             charLen[j] = i - charIndex[j]

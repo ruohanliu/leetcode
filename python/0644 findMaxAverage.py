@@ -1,10 +1,9 @@
 from itertools import accumulate
 
-
 class Solution:
     def findMaxAverage(self, nums: List[int], k: int) -> float:
         """
-            #binarysearch
+            #binarysearch #important
         """
         def test(avg):
             sum_so_far = 0

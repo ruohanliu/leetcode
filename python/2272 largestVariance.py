@@ -6,7 +6,7 @@ class Solution:
         c = Counter(s)
         ans = 0
         for a,b in itertools.permutations(c,2):
-            if max(c[a],c[b]) - 1 <= ans:
+            if max(c[a],c[b]) < ans:
                 continue
             ps = 0
             prev_ps = 0

@@ -3,13 +3,13 @@ class Solution:
         m = len(text1)
         n = len(text2)
         dp = [[0] * (n+1) for _ in range(m+1)]
-        for i in reversed(range(m)):
-            for j in reversed(range(n)):
+        for i in range(m):
+            for j in range(n):
                 if text1[i] == text2[j]:
-                    dp[i][j] = 1+dp[i+1][j+1]
+                    dp[i+1][j+1] = dp[i][j] + 1
                 else:
-                    dp[i][j] = max(dp[i][j+1],dp[i+1][j])
-        return dp[0][0]
+                    dp[i+1][j+1] = max(dp[i][j+1],dp[i+1][j])
+        return dp[-1][-1]
         
     # print lcs
     def lcs(s,t):
@@ -20,6 +20,8 @@ class Solution:
             for j in range(m):
                 if s[i] == t[j]:
                     dp[i+1][j+1] = dp[i][j] + 1
+                else:
+                    dp[i+1][j+1] = max(dp[i][j+1],dp[i+1][j])
         ans = []
         i = n
         j = m

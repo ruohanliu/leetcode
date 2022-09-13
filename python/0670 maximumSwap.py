@@ -1,8 +1,18 @@
 class Solution:
     def maximumSwap(self, num: int) -> int:
         """
-            #stack
+            #digits
         """
+        A = list(map(int, str(num)))
+        last = {x: i for i, x in enumerate(A)}
+        for i, x in enumerate(A):
+            for d in range(9, x, -1):
+                if d in last and last[d] > i:
+                    A[i], A[last[d]] = A[last[d]], A[i]
+                    return int("".join(map(str, A)))
+        return num
+
+    def maximumSwap(self, num: int) -> int:
         digits = list(map(int,list(str(num))))
         n = len(digits)
         stack = []

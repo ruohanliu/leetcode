@@ -1,8 +1,27 @@
 class Solution:
     def furthestBuilding(self, heights: List[int], bricks: int, ladders: int) -> int:
         """
-            #binary search
+            #binarysearch #greedy #heap
+
+            related: 871 630
         """
+        heap = []
+        n = len(heights)
+        for i in range(1,n):
+            diff = heights[i] - heights[i-1]
+            if diff>0:
+                bricks -= diff
+                heapq.heappush(heap,-diff)
+                while bricks < 0 and heap and ladders > 0:
+                    mx = -heapq.heappop(heap)
+                    bricks += mx
+                    ladders -= 1
+                if bricks < 0:
+                    return i-1
+        return n-1
+
+
+    def furthestBuilding(self, heights: List[int], bricks: int, ladders: int) -> int:
         heightDiff = sorted([(y-x,i) for i,(x,y) in enumerate(zip(heights,heights[1:]))],reverse = True)
         def check(i):
             cost = 0

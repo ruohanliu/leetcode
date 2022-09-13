@@ -3,6 +3,8 @@ class Solution:
         """
             #dp #bitmask
 
+            related: 881
+
             greedy solution doesnt work
             [2,3,3,4,4,4,5,6,7,10] 12
         """

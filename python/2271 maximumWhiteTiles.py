@@ -10,7 +10,7 @@ class Solution:
 
         for i,(l,r) in enumerate(tiles):
             # look for the tile that covers end of carpet
-            j = bisect.bisect_left(ps,(l+carpetLen,0))-1
+            j = bisect.bisect_left(ps,(l+carpetLen,0),i+1)-1
             temp = ps[j][1]-ps[i][1] - max(tiles[j-1][1] - (l+carpetLen) + 1,0)
             ans = max(ans,temp)
         return ans

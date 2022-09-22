@@ -48,9 +48,7 @@ class Solution:
                             del balance[p]
                         ans = min(ans,size-1 + backtrack(balance))
                         balance |= temp
-                        
-                if ans < float("inf"):
-                    return ans
+            return ans
         
         balance = defaultdict(int)
         for f,t,amt in transactions:

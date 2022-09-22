@@ -40,20 +40,16 @@ class KeyValueStore():
             self._putValue(key, value)
 
     def binarySearch(self, snapVals, snapID):
-        left = 0
-        right = len(snapVals) - 1
+        lo = 0
+        hi = len(snapVals) - 1
 
-        while left < right:
-            mid = int((left + right) / 2)
+        while lo < hi:
+            mid = (lo + hi) // 2
             if snapVals[mid][0] < snapID:
-                # go right half
-                left = mid + 1
-            elif snapVals[mid][0] > snapID:
-                # go left half
-                right = mid
+                lo = mid + 1
             else:
-                return snapVals[mid]
-        return snapVals[left]
+                hi = mid
+        return snapVals[lo]
 
     def getKey(self, key: str, snapID: int):
         """
@@ -80,10 +76,9 @@ class KeyValueStore():
         # to avoid recent conditions, while snapshot index is incremented
         with self.snapshotLock:
             self.snapshotInProgress.set()
-            snapID = self.snapID
             self.snapID += 1
             self.snapshotInProgress.clear()
-        return snapID
+        return self.snapID-1
 
 
 def client1(kv):

@@ -8,7 +8,7 @@ class Solution:
         heap = []
         ans = float("inf")
         total_quality = 0
-        for ratio,q,w in sorted((w / q,q,w) for q,w in zip(quality,wage)):
+        for ratio,q in sorted((w / q,q) for q,w in zip(quality,wage)):
             heapq.heappush(heap,-q)
             total_quality += q
             if len(heap) > k:

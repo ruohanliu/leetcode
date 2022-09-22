@@ -1,6 +1,6 @@
 
 class Solution:
-    def removeBoxes_tle(self, boxes: List[int]) -> int:
+    def removeBoxes(self, boxes: List[int]) -> int:
         """
             #dp #multistate #relation #important
         """

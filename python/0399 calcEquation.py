@@ -32,6 +32,7 @@ class Solution:
             else:
                 ans.append(expandedEquations[(x,y)] if (x,y) in expandedEquations else -1.0)
         return ans
+
     def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
         """
             #precompute
@@ -46,3 +47,26 @@ class Solution:
                 for b in adjList[v]:
                     adjList[a][b] = adjList[a][v] * adjList[v][b]
         return [adjList[a].get(b, -1.0) for a, b in queries]
+
+    def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
+        adjList = defaultdict(dict)
+        for (a, b), val in zip(equations, values):
+            adjList[a][a] = adjList[b][b] = 1.0
+            adjList[a][b] = val
+            adjList[b][a] = 1 / val
+        
+        def dfs(a,b,visited,val):
+            if a not in adjList or b not in adjList:
+                return float("inf")
+            if a == b:
+                return val
+            visited.add(a)
+            ans = None
+            for _a in adjList[a]:
+                if _a in visited:
+                    continue
+                res = dfs(_a,b,visited,val*adjList[a][_a])
+                if res < float("inf"):
+                    return res
+            return float("inf")
+        return [dfs(a,b,set(),1.0) if dfs(a,b,set(),1.0) < float("inf") else -1.0 for a,b in queries]

@@ -4,7 +4,7 @@ class TrieNode:
         self.child = defaultdict(TrieNode)
 class AutocompleteSystem:
     """
-        #trie
+        #trie #google
 
         alternatively store count in each trie node to reduce space usage at cost of dfs searching time
         def dfs(self, root):

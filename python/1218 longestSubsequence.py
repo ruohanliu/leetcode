@@ -1,5 +1,5 @@
 class Solution:
-    def longestSubsequence_tle(self, arr: List[int], difference: int) -> int:
+    def longestSubsequence(self, arr: List[int], difference: int) -> int:
         """
             #dp
         """

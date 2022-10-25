@@ -16,4 +16,3 @@ class Solution:
             if len(heap) == k:
                 ans = min(ans,ratio * total_quality)
         return ans
-            

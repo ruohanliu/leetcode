@@ -13,16 +13,13 @@ class Solution:
         for k in range(2,n):
             for lo in range(n-k):
                 hi = lo+k
-                dp[lo][hi] = max(dp[lo][hi],max(nums[lo]*nums[i]*nums[hi] + dp[lo][i] + dp[i][hi] for i in range(lo+1,hi)))
+                dp[lo][hi] = max(nums[lo]*nums[i]*nums[hi] + dp[lo][i] + dp[i][hi] for i in range(lo+1,hi))
         return dp[0][n-1]
 
     def maxCoins(self, nums: List[int]) -> int:
         @cache
         def dp(lo,hi):
-            ans = 0
-            for i in range(lo+1,hi):
-                ans = max(ans,nums[i]*nums[lo]*nums[hi] + dp(lo,i) + dp(i,hi))
-            return ans
+            return max([nums[i]*nums[lo]*nums[hi] + dp(lo,i) + dp(i,hi) for i in range(lo+1,hi)],default = 0)
 
         nums = [1] + [x for x in nums if x != 0] + [1]
         n = len(nums)

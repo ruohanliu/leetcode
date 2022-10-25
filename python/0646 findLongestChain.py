@@ -21,7 +21,6 @@ class Solution:
 
             interval scheduling problem
         """
-        n = len(pairs)
         curr = float("-inf")
         ans = 0
         pairs.sort(key=lambda x: x[1])
